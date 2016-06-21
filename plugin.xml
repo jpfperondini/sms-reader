@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-sms-reader" version="0.0.1"
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>SmsReader</name>
+  <js-module name="SmsReader" src="www/SmsReader.js">
+    <clobbers target="cordova.plugins.SmsReader" />
+  </js-module>
+
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="SmsReader">
+        <param name="android-package" value="cordova.plugin.sms.reader.SmsReader" />
+        <param name="onload" value="true"/>
+      </feature>
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml">
+       <uses-permission android:name="android.permission.READ_SMS" />
+    </config-file>
+    <source-file src="src/android/SmsReader.java" target-dir="src/cordova/plugin/sms/reader" />
+  </platform>
+</plugin>

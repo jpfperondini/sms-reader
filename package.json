@@ -1,0 +1,21 @@
+{
+  "name": "sms-reader",
+  "version": "0.1.0",
+  "description": "Cordova plugin to read SMS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpfperondini/sms-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jpfperondini/sms-reader/issues"
+  },
+  "keywords": [
+    "cordova",
+    "sms"
+  ],
+  "author": {
+    "name": "João Pedro Perondini",
+    "email": "jpfperondini@gmail.com"
+  },
+  "license": "MIT"
+}
