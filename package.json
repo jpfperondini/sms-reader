@@ -4,18 +4,24 @@
   "description": "Cordova plugin to read SMS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpfperondini/sms-reader.git"
+    "url": "git+https://github.com/jpfperondini/sms-reader.git"
   },
   "bugs": {
     "url": "https://github.com/jpfperondini/sms-reader/issues"
   },
   "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
     "cordova",
     "sms"
   ],
-  "author": {
-    "name": "João Pedro Perondini",
-    "email": "jpfperondini@gmail.com"
-  },
-  "license": "MIT"
+  "author": "João Pedro Perondini <jpfperondini@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jpfperondini/sms-reader#readme",
+  "cordova": {
+    "id": "cordova-plugin-sms-reader",
+    "platforms": [
+      "android"
+    ]
+  }
 }
