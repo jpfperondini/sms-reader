@@ -18,15 +18,15 @@ public class SmsReader extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("checkSMS")) {
+        if (action.equals("checkText")) {
             String message = args.getString(0);
-            this.checkSMS(message, callbackContext);
+            this.checkText(message, callbackContext);
             return true;
         }
         return false;
     }
 
-    private void checkSMS(String message, CallbackContext callbackContext) {
+    private void checkText(String message, CallbackContext callbackContext) {
         if (message != null && message.length() > 0) {
             Cursor cursor = cordova.getActivity().getContentResolver().query(Uri.parse(INBOX), null, null, null, null);
             if (cursor.moveToFirst()) {
