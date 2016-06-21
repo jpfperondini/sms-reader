@@ -29,9 +29,7 @@ public class SmsReader extends CordovaPlugin {
     private void checkSMS(String message, CallbackContext callbackContext) {
         if (message != null && message.length() > 0) {
             Cursor cursor = cordova.getActivity().getContentResolver().query(Uri.parse(INBOX), null, null, null, null);
-
-            if (cursor.moveToFirst()) { // must check the result to prevent exception
-
+            if (cursor.moveToFirst()) {
                 do {
                     String msgData = "";
                     for (int idx = 0; idx < cursor.getColumnCount(); idx++) {
