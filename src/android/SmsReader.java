@@ -22,7 +22,7 @@ public class SmsReader extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if(!PermissionHelper.hasPermission(this, READ_SMS)) {
             PermissionHelper.requestPermission(this, SEARCH_REQ_CODE, READ_SMS);
-            callbackContext.success();
+            callbackContext.success("PLUGIN_PERMISSION_REQUESTED");
             return true;
         } else if (action.equals("checkText")) {
             String message = args.getString(0);
@@ -43,7 +43,7 @@ public class SmsReader extends CordovaPlugin {
                         String value = cursor.getString(idx);
                         if("body".equals(name)) {
                             if(value.contains(message)) {
-                                callbackContext.success();
+                                callbackContext.success(message);
                                 return;
                             }
                         }
