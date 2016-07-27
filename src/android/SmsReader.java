@@ -1,10 +1,12 @@
 package cordova.plugin.sms.reader;
 
+import android.Manifest;
 import android.database.Cursor;
 import android.net.Uri;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.PermissionHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,13 +14,17 @@ import org.json.JSONObject;
 
 public class SmsReader extends CordovaPlugin {
 
-    public static final String INBOX = "content://sms/inbox";
-    public static final String SENT = "content://sms/sent";
-    public static final String DRAFT = "content://sms/draft";
+    private static final String READ_SMS = Manifest.permission.READ_SMS;
+    private static final int SEARCH_REQ_CODE = 0;
+    private static final String INBOX = "content://sms/inbox";
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("checkText")) {
+        if(!PermissionHelper.hasPermission(this, READ_SMS)) {
+            PermissionHelper.requestPermission(this, SEARCH_REQ_CODE, READ_SMS);
+            callbackContext.success("PLUGIN_PERMISSION_REQUESTED");
+            return true;
+        } else if (action.equals("checkText")) {
             String message = args.getString(0);
             this.checkText(message, callbackContext);
             return true;
@@ -37,7 +43,7 @@ public class SmsReader extends CordovaPlugin {
                         String value = cursor.getString(idx);
                         if("body".equals(name)) {
                             if(value.contains(message)) {
-                                callbackContext.success();
+                                callbackContext.success(message);
                                 return;
                             }
                         }
