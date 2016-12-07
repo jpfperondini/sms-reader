@@ -8,7 +8,7 @@ Feel free to request features on the issues tab
 
 ### Sample usage ###
 
-```
+```js
 window.cordova.plugins.SmsReader.checkText('what to search', function (ret) {
 			if(ret === 'PLUGIN_PERMISSION_REQUESTED') {
 			  //Callback for permission request
